@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蔣維桓 | 數位品牌形象官網</title>
+    <!-- 引入 Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入 Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-glow: #0072ff;
+            --secondary-glow: #00f2fe;
+            --dark-bg: #0b0f19;
+            --card-glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            scroll-behavior: smooth;
+            padding-top: 70px;
+        }
+
+        /* 頂級極簡導覽列 */
+        .navbar-custom {
+            background: rgba(11, 15, 25, 0.85) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 0;
+        }
+        .navbar-custom .navbar-brand {
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .navbar-custom .nav-link {
+            color: #94a3b8 !important;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #fff !important;
+        }
+
+        /* 首頁極致奢華漸層 */
+        .hero-section {
+            background: radial-gradient(circle at 90% 10%, #1e2942 0%, var(--dark-bg) 70%);
+            color: white;
+            padding: 140px 0 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+            filter: blur(120px);
+            opacity: 0.2;
+            top: 10%;
+            left: 10%;
+            border-radius: 50%;
+        }
+
+        .avatar-frame {
+            position: relative;
+            display: inline-block;
+        }
+        .avatar-frame::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.8;
+        }
+        .avatar-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+            border: 4px solid var(--dark-bg);
+        }
+
+        /* 藝術感標題配置 */
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        .section-accent-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #3b82f6;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .section-main-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            position: relative;
+        }
+
+        /* 現代幾何教育卡片 */
+        .edu-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.02);
+        }
+
+        /* 毛玻璃技能專長 */
+        .skills-section {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 90px 0;
+        }
+        .skills-section .section-main-title {
+            color: white;
+        }
+        .glass-skill-card {
+            background: var(--card-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .custom-progress {
+            height: 8px;
+            background-color: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            overflow: visible;
+            position: relative;
+        }
+        .custom-progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            position: relative;
+            background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow));
+        }
+        .custom-progress-bar::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 3px solid var(--primary-glow);
+            border-radius: 50%;
+            right: -2px;
+            top: -3px;
+            box-shadow: 0 0 10px var(--secondary-glow);
+        }
+
+        /* 俐落感經驗卡片 */
+        .exp-card {
+            background: white;
+            border-left: 4px solid #0f172a;
+            border-radius: 0 16px 16px 0;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            height: 100%;
+        }
+
+        /* 錯落網格專案作品 */
+        .project-card-premium {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .project-card-premium:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .project-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            color: #64748b;
+        }
+        .article-img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 客製化簡報按鈕風格 */
+        .btn-canva-custom {
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.2);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-canva-custom:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 114, 255, 0.4);
+            background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+        }
+
+        /* 純文字洗鍊雜誌風文章 */
+        .magazine-article {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.04);
+            border: 1px solid #f1f5f9;
+        }
+
+        /* 榮譽清單現代美化 */
+        .honor-item-premium {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .honor-item-premium:hover {
+            border-color: #0f172a;
+            transform: translateX(5px);
+        }
+        .honor-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #0f172a;
+            flex-shrink: 0;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #64748b;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">CHIANG WEI-HUAN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item"><a class="nav-link" href="#about">關於我</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">教育脈絡</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">核心專長</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">實務閱歷</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">專案櫥窗</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#articles">科技見解</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#awards">榮譽實績</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首頁 & 自我介紹 -->
+    <header id="about" class="hero-section">
+        <div class="container text-center text-lg-start">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-4 text-center">
+                    <div class="avatar-frame">
+                        <img src="images/huan.jpg" alt="蔣維桓 本人形象照" class="avatar-img shadow-lg">
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <span class="text-uppercase fw-bold text-info tracking-widest mb-2 d-block" style="letter-spacing: 2px;">Personal Digital Brand</span>
+                    <h1 class="display-4 fw-bold mb-1">蔣維桓 <span class="fs-3 text-muted fw-normal">(Jeremy Chiang)</span></h1>
+                    <p class="fs-5 text-secondary mb-4">國立聯合大學 資訊管理學系二甲</p>
+                    <p class="lh-lg text-light-50 mb-4" style="color: #cbd5e1; font-weight: 300;">
+                        我是蔣維桓，一名土生土長的苗栗人。在資管領域的學習中，我發現自己在管理與行銷科目上展現出非常強的理解力與統整能力，並熱衷於將其應用在解決環境永續等實際社會議題上。
+                        雖然在程式設計這條路上，我的步伐不像天才型同學那樣學一下就大徹大悟，但我從未放棄。
+                        我投入加倍的努力針對弱項進行精進——從網頁前端開發到人工智慧程式設計，我都堅持作業準時提交、在 Demo 時做足準備以沉著穩定的態度回答老師的提問。在 2026 年，我更將跨領域所學整合，組隊挑戰全國大專院校提案競賽，用毅力與實績證明自己的專業態度。
+                    </p>
+                    <div class="d-flex justify-content-center justify-content-lg-start flex-wrap gap-2">
+                        <span class="btn btn-sm btn-outline-light rounded-pill px-3 py-2 disabled" style="opacity: 0.9; font-size: 0.85rem;"><i class="bi bi-fire text-danger me-1"></i> 健身愛好者</span>
+                        <span class="btn btn-sm btn-outline-light rounded-pill px-3 py-2 disabled" style="opacity: 0.9; font-size: 0.85rem;"><i class="bi bi-dribbble text-warning me-1"></i> 系籃核心球員</span>
+                        <span class="btn btn-sm btn-outline-light rounded-pill px-3 py-2 disabled" style="opacity: 0.9; font-size: 0.85rem;"><i class="bi bi-compass text-info me-1"></i> 研究所升學目標</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 教育背景 -->
+    <section id="education" class="py-5">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-accent-title">Education</span>
+                <h2 class="section-main-title">教育背景</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="edu-card">
+                        <div class="d-flex justify-content-between align-items-start flex-wrap mb-3">
+                            <div>
+                                <h4 class="fw-bold text-dark mb-1">國立聯合大學 (National United University)</h4>
+                                <span class="text-primary fw-semibold">資訊管理學系 | 學士學位 (2024 - 2028)</span>
+                            </div>
+                        </div>
+                        <p class="text-secondary lh-lg mb-0" style="font-size: 0.95rem;">
+                            <strong>跨域學術優勢：</strong> 融會貫通管理學基礎，長於宏觀思考、團隊想法整合與資源協調，能將精準的網路行銷思維無縫導入資訊系統規劃之中。<br>
+                            <strong>核心修課範疇：</strong> 人工智慧程式設計、行銷管理、網路行銷、網頁前端開發實務、資料結構。<br>
+                            <strong>網頁前端實作：</strong> 本次期末專案獨立結合進階網頁美學調校、原生 RWD 架構與 GitHub 版本控制，親手刻劃出完美兼容於多端螢幕的精緻幾何介面。<br>
+                            <strong>學術競賽實績：</strong> 組隊代表國立聯合大學，積極出征「2026 全國大專院校永續 × 循環經濟 × AI 創新提案競賽」。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技能專長 -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-accent-title" style="color: #60a5fa;">Expertise</span>
+                <h2 class="section-main-title">核心技能專長</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="glass-skill-card">
+                        <p class="text-center mb-5" style="color: #94a3b8; font-weight: 300;">在硬核開發與技術應用中，我以 75% 左右的穩健腳步全面推進成長：</p>
+                        
+                        <!-- 技能 1 -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-semibold">程式語言 <span class="text-muted fw-normal" style="font-size:0.85rem;">(PHP, Python, C++, HTML/CSS)</span></span>
+                                <span class="fw-bold text-info">75%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" style="width: 75%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 技能 2 -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-semibold">資料庫管理 <span class="text-muted fw-normal" style="font-size:0.85rem;">(MySQL 關係式設計、外鍵設定與查詢優化)</span></span>
+                                <span class="fw-bold text-info">75%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" style="width: 75%; background: linear-gradient(90deg, #10b981, #059669);"></div>
+                            </div>
+                        </div>
+
+                        <!-- 技能 3 -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-semibold">開發工具與技術 <span class="text-muted fw-normal" style="font-size:0.85rem;">(GitHub 版本控制、API 序列化處理)</span></span>
+                                <span class="fw-bold text-info">75%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" style="width: 75%; background: linear-gradient(90deg, #f59e0b, #d97706);"></div>
+                            </div>
+                        </div>
+
+                        <!-- 技能 4 -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-semibold">自動化與 AI 應用 <span class="text-muted fw-normal" style="font-size:0.85rem;">(AI 工具整合應用)</span></span>
+                                <span class="fw-bold text-info">75%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" style="width: 75%; background: linear-gradient(90deg, #ec4899, #db2777);"></div>
+                            </div>
+                        </div>
+
+                        <!-- 軟實力 -->
+                        <div class="mb-2 mt-5 pt-3 border-top border-secondary border-opacity-10">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="fw-semibold text-warning">團隊統整、跨域協調與綠色行銷思維</span>
+                                <span class="fw-bold text-warning">92%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" style="width: 92%; background: linear-gradient(90deg, #e11d48, #be123c);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作與球隊經驗 -->
+    <section id="experience" class="py-5">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-accent-title">Experience</span>
+                <h2 class="section-main-title">工作與球隊經驗</h2>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-5">
+                    <div class="exp-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0 text-dark">海神健身館</h5>
+                            <span class="badge bg-dark rounded-pill fw-normal">現場營運人員</span>
+                        </div>
+                        <p class="text-secondary lh-lg mb-0" style="font-size: 0.92rem;">
+                            將強烈的健身興趣揉合至實務現場。在海神健身館負責客戶服務與高價值器材的精準排程維護。
+                            在這個過程中，我實地沉浸、觀察並靈活對接課堂上所學的**行銷管理**概念，深刻體會在地化數位行銷與高黏著度客戶關係管理 (CRM) 的商業運作。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="exp-card" style="border-left-color: #3b82f6;">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0 text-dark">聯大資管系系籃</h5>
+                            <span class="badge bg-primary rounded-pill fw-normal">核心主力隊員</span>
+                        </div>
+                        <p class="text-secondary lh-lg mb-0" style="font-size: 0.92rem;">
+                            籃球，是我靈魂中不可割捨的拼圖。我知道自己沒有國中同學林現惟在美國籃壇殺進殺出的神級天賦，但我更懂得團隊合作與系統戰術的力量。
+                            我在系籃高強度的練習中毫無保留地傾注熱血，透過卓越的管理思維做好球場上的擋人、防守與思想統整，誓言要為即將畢業的學長們奪下一座冠軍盃！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 專案作品 -->
+    <section id="projects" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-accent-title">Portfolio</span>
+                <h2 class="section-main-title">專案作品櫥窗</h2>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- 卡片 1 (Eco-Bite 計畫 + Canva 連結按鈕) -->
+                <div class="col-md-4">
+                    <div class="project-card-premium p-4">
+                        <div>
+                            <span class="project-tag">AI & Sustainability</span>
+                            <h5 class="fw-bold my-2 text-dark">Eco-Bite 平台計畫</h5>
+                            <p class="text-secondary fs-6 lh-lg mb-4">
+                                專為「永續 × 循環經濟 × AI」全國大專競賽量身設計的核心 Proposal[cite: 1]。整合人工智慧程式設計進行剩食的數據精準媒合與環境碳足跡追蹤，並帶入大二所學的網路行銷思維，由我主導全隊的想法協調與商業模式規劃。
+                            </p>
+                        </div>
+                        <!-- Canva 連結按鈕 -->
+                        <div>
+                            <a href="https://canva.link/hxhwbtu4zgua9wf" target="_blank" class="btn-canva-custom">
+                                <i class="bi bi-layers-half"></i> 查看專案簡報 (Canva)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 卡片 2 (第一張籃球比賽照片：113年新生盃 & 校長盃雙料季軍) -->
+                <div class="col-md-4">
+                    <div class="project-card-premium">
+                        <div class="article-img-wrapper" style="height: 180px;">
+                            <img src="images/basketball1.jpg" class="w-100 h-100" style="object-fit: cover;" alt="113年聯大新生盃與校長盃榮譽">
+                        </div>
+                        <div class="p-4">
+                            <span class="project-tag text-danger">Team Spirit / Cup</span>
+                            <h5 class="fw-bold my-2 text-dark">113年 新生盃 & 校長盃雙料第三名</h5>
+                            <p class="text-secondary fs-6 lh-lg mb-0">
+                                實地記錄剛步入聯合大學時，與資管系籃夥伴在賽場上揮灑汗水、碰撞默契的榮耀篇章[cite: 1]。這兩座季軍獎盃，見證了團隊永不退縮、堅持奮戰到底的信念。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 卡片 3 (第二張籃球比賽照片：114年校長盃第四名) -->
+                <div class="col-md-4">
+                    <div class="project-card-premium">
+                        <div class="article-img-wrapper" style="height: 180px;">
+                            <img src="images/basketball2.jpg" class="w-100 h-100" style="object-fit: cover;" alt="114年聯大校長盃第四名榮譽">
+                        </div>
+                        <div class="p-4">
+                            <span class="project-tag text-primary">Team Spirit / Cup</span>
+                            <h5 class="fw-bold my-2 text-dark">114年 校長盃第四名</h5>
+                            <p class="text-secondary fs-6 lh-lg mb-0">
+                                延續熱血精神，大二與球隊夥伴持續在高強度對抗中精進戰術執行力。這項第四名的佳績，深刻凝聚了整個團隊在逆境中沉著布局、相互協調的管理溝通核心能力。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 專業見解文章 -->
+    <section id="articles" class="py-5">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-accent-title">Thought Leadership</span>
+                <h2 class="section-main-title">科技見解 (Articles)</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="magazine-article p-4 p-md-5">
+                        <span class="project-tag text-primary mb-2 d-block">Insight Article</span>
+                        <h4 class="fw-bold text-dark mb-3">我們不需要人人都是寫程式天才：談 AI 與自動化時代下資管人的「整合價值」</h4>
+                        <span class="text-muted d-block mb-4" style="font-size:0.85rem;"><i class="bi bi-calendar3 me-1"></i> 發表於 2026 年 6 月 — 蔣維桓</span>
+                        
+                        <p class="text-secondary lh-lg mb-0" style="font-size: 0.98rem; font-weight: 300; text-align: justify;">
+                            在聯大資管系學習的兩年裡，我常常看見身邊有些同學寫程式像喝水一樣快，而我自己剛開始接觸那些複雜的後端邏輯架構時，步伐總是比大家慢半拍。這曾讓我陷入焦慮：如果我沒辦法成為頂尖的純代碼黑客，我的核心競爭力究竟在哪裡？<br><br>
+                            直到今年，我接連修習了「人工智慧程式設計」、「行銷管理」與「網路行銷」，並代表學校組隊參賽「2026 全國大專院校永續 × 循環經濟 × AI 創新提案競賽」，這段旅程徹底拓寬了我的視野。在共同激盪專案『Eco-Bite』時，我赫然發現，團隊裡固然需要寫扣高手，但如果缺乏懂市場定位、懂得勾勒循環經濟商業模型的決策者，專案根本無法落地。此時，我在管理整合與行銷敏銳度上的強項便發揮了靈魂作用——我能將冰冷生硬的 AI 科技，完美轉譯為大眾聽得懂的綠色行銷語言，成功主導了全案的商業邏輯規劃。<br><br>
+                            當今技術演進極快，不論是 PHP、Python 的系統整合，或是 GitHub 版本控制，這些硬技術因生成式 AI 工具的降臨而使得學習門檻大幅降低。這也宣告著：**未來的科技戰場上，單純「會寫程式」的邊際價值正在被稀釋，而具備跨域「整合技術與商業行銷思維」的資管人，其獨特價值正在翻倍。**
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 獲獎與榮譽 -->
+    <section id="awards" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-accent-title">Achievements</span>
+                <h2 class="section-main-title">獲獎與榮譽 (Awards)</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- 榮譽 1 -->
+                    <div class="honor-item-premium border-start border-warning border-3">
+                        <div class="honor-icon-box text-warning bg-warning bg-opacity-10 me-4">
+                            <i class="bi bi-trophy-fill"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold text-dark mb-1">2026 全國大專院校永續 × 循環經濟 × AI 創新提案競賽</h6>
+                            <span class="text-secondary small">代表國立聯合大學資管系，以「Eco-Bite 剩食追蹤平台」出征全國殿堂</span>
+                        </div>
+                    </div>
+                    <!-- 榮譽 2 -->
+                    <div class="honor-item-premium border-start border-danger border-3">
+                        <div class="honor-icon-box text-danger bg-danger bg-opacity-10 me-4">
+                            <i class="bi bi-dribbble"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold text-dark mb-1">國立聯合大學 籃球賽事核心得獎實績</h6>
+                            <div class="text-secondary small mt-1 lh-base">
+                                🏆 113年 聯合大學新生盃籃球賽 — 第三名 (季軍)[cite: 1] <br>
+                                🏆 113年 聯合大學校長盃籃球賽 — 第三名 (季軍)[cite: 1] <br>
+                                🏆 114年 聯合大學校長盃籃球賽 — 第四名[cite: 1]
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 榮譽 3 -->
+                    <div class="honor-item-premium border-start border-success border-3">
+                        <div class="honor-icon-box text-success bg-opacity-10 me-4" style="background-color: rgba(16,185,129,0.1);">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold text-dark mb-1">國立聯合大學資管系 專案作業高完成度表揚</h6>
+                            <span class="text-secondary small">堅持硬核專案高頻率自主練習、作業準時提交與穩定的 Demo 表現</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-2 text-white-50">&copy; 2026 蔣維桓 (Jeremy Chiang). All Rights Reserved.</p>
+            <p class="mb-0" style="font-size:0.8rem;">學號：U1333027 | 國立聯合大學資訊管理學系二甲期末專案作品</p>
+        </div>
+    </footer>
+
+    <!-- 引入 Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
